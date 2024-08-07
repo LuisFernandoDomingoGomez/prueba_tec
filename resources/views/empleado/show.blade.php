@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Empresa:</strong>
-                            {{ $empleado->empresa_id }}
+                            {{ $empleado->empresa->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Genero:</strong>
@@ -43,6 +43,10 @@
                         <div class="form-group mb-2 mb20">
                             <strong>Telefono de contacto:</strong>
                             {{ $empleado->telefono }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Sueldo diario:</strong>
+                            ${{ $empleado->sueldo_diario }}
                         </div>
 
                     </div>

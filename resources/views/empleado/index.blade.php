@@ -49,6 +49,7 @@
 										<th>Fecha de Nacimiento</th>
 										<th>CURP</th>
 										<th>Telefono</th>
+                                        <th>Sueldo Diario</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -61,9 +62,10 @@
 											<td>{{ $empleado->name }}</td>
 											<td>{{ $empleado->empresa->name }}</td>
 											<td>{{ $empleado->genero }}</td>
-											<td>{{ $empleado->fecha_nac }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($empleado->fecha_nac)->isoFormat('D [de] MMMM [de] YYYY') }}</td>
 											<td>{{ $empleado->curp }}</td>
 											<td>{{ $empleado->telefono }}</td>
+                                            <td>${{ $empleado->sueldo_diario }}</td>
 
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
