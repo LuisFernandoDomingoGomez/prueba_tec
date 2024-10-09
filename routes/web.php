@@ -21,9 +21,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('empresas', EmpresaController::class);
-Route::resource('empleados', EmpleadoController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('empresas', EmpresaController::class);
+    Route::resource('empleados', EmpleadoController::class);
 
-Route::get('empleado.pdf', 'App\Http\Controllers\EmpleadoController@pdf')->name('empleado.pdf');
-Route::get('empleado.download-pdf', 'App\Http\Controllers\EmpleadoController@downloadPdf')->name('empleado.downloadPdf');
+    Route::get('empleado.pdf', 'App\Http\Controllers\EmpleadoController@pdf')->name('empleado.pdf');
+    Route::get('empleado.download-pdf', 'App\Http\Controllers\EmpleadoController@downloadPdf')->name('empleado.downloadPdf');
+});
