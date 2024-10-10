@@ -36,7 +36,7 @@ class EmpleadoController extends Controller
         $empleados = Empleado::paginate(200);
         $pdf = PDF::loadView('empleado.pdf', ['empleados' => $empleados]);
 
-        return $pdf->setPaper('a4')->download('empleado.pdf');
+        return $pdf->setPaper('a4', 'landscape')->download('empleado.pdf');
     }
 
     /**
